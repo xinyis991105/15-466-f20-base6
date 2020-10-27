@@ -279,8 +279,6 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 	const glm::u8vec4 bg_color = HEX_TO_U8VEC4(0x171714ff);
 	const glm::u8vec4 fg_color = HEX_TO_U8VEC4(0xd1bb54ff);
 	const glm::u8vec4 shadow_color = HEX_TO_U8VEC4(0x604d29ff);
-	// const glm::u8vec4 arrow_color = HEX_TO_U8VEC4(0xffff00ff);
-	// const glm::u8vec4 green = HEX_TO_U8VEC4(0x00ff00ff);
 	const glm::u8vec4 red = HEX_TO_U8VEC4(0xff0000ff);
 	const std::vector< glm::u8vec4 > rainbow_colors = {
 		HEX_TO_U8VEC4(0x604d29ff), HEX_TO_U8VEC4(0x624f29fc), HEX_TO_U8VEC4(0x69542df2),
@@ -349,7 +347,6 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 	if (score >= 0) {
 		draw_rectangle(ball_pos, ball_radius, fg_color);
 	}
-
 
 	//------ compute court-to-window transform ------
 
@@ -433,31 +430,6 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 
 	//reset current program to none:
 	glUseProgram(0);
-
-	{ 
-		//use DrawLines to overlay some text:
-		float aspect = float(drawable_size.x) / float(drawable_size.y);
-		DrawLines lines(glm::mat4(
-			1.0f / aspect, 0.0f, 0.0f, 0.0f,
-			0.0f, 1.0f, 0.0f, 0.0f,
-			0.0f, 0.0f, 1.0f, 0.0f,
-			0.0f, 0.0f, 0.0f, 1.0f
-		));
-
-		auto draw_text = [&](glm::vec2 const &at, std::string const &text, float H) {
-			lines.draw_text(text,
-				glm::vec3(at.x, at.y, 0.0),
-				glm::vec3(H, 0.0f, 0.0f), glm::vec3(0.0f, H, 0.0f),
-				glm::u8vec4(0x00, 0x00, 0x00, 0x00));
-			float ofs = 2.0f / drawable_size.y;
-			lines.draw_text(text,
-				glm::vec3(at.x + ofs, at.y + ofs, 0.0),
-				glm::vec3(H, 0.0f, 0.0f), glm::vec3(0.0f, H, 0.0f),
-				glm::u8vec4(0xff, 0xff, 0xff, 0x00));
-		};
-
-		draw_text(glm::vec2(-aspect + 0.1f, 0.0f), "what is happening", 0.09f);
-	}
 	
 
 	GL_ERRORS(); //PARANOIA: print errors just in case we did something wrong.

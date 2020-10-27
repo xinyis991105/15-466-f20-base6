@@ -40,9 +40,6 @@ struct PlayMode : Mode {
 	int8_t score = 0;
 	bool playing = false;
 
-	//last message from server:
-	std::string server_message;
-
 	//connection to server:
 	Client &client;
 
