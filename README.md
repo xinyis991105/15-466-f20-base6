@@ -1,10 +1,10 @@
-# (TODO: your game's title)
+# Keep Pong Going
 
-Author: (TODO: your name)
+Author: Xinyi Sun
 
-Design: (TODO: In two sentences or fewer, describe what is new and interesting about your game.)
+Design: This is a multiplayer game that allows up to 4 players to play an unconventional pong game where their collective goal is to keep pong going as long as possible. Random openings might show up on the four sides. Players should aim to keep pong within range. This was one of my ideas for game0 which was not possible back at the time since only single-player was allowed.
 
-Networking: (TODO: How does your game implement client/server multiplayer? What is transmitted? Where in the code?)
+Networking: The overall game state (i.e. whether the ball has "escaped", the position of the ball) is maintained by the server. The server is also responsible for detecting collisions. Each client is only responsible for updating their own paddle's position, which is then sent to server.
 
 Screen Shot:
 
@@ -12,9 +12,9 @@ Screen Shot:
 
 How To Play:
 
-(TODO: describe the controls and (if needed) goals/strategy.)
+Use your mouse to control your paddle.
 
-Sources: (TODO: list a source URL for any assets you did not create yourself. Make sure you have a license for the asset.)
+Sources: This game stems from the pong game so a significant portion of the game code including object collision and 2D drawing comes from the base code of game0 F20 as well as my new code for game0. Other than that, wrong\_ball.wav is a track I created for game3.
 
 This game was built with [NEST](NEST.md).
 
