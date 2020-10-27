@@ -70,7 +70,6 @@ int main(int argc, char **argv) {
 	active_players[1] = glm::vec2(6.5f, 0.0f);
 	active_players[2] = glm::vec2(0.0f, 6.5f);
 	active_players[3] = glm::vec2(-6.5f, 0.0f);
-	uint8_t watching_num = 0;
 	int8_t score = 0;
 	float count_down = 4.0f;
 	float win_count_down = 2.0f;
@@ -180,7 +179,6 @@ int main(int argc, char **argv) {
 						tmp.position = 1;
 					} else {
 						// watching mode
-						watching_num++;
 						tmp.position = -1;
 					}
 					players.emplace(c, tmp);
@@ -230,8 +228,6 @@ int main(int argc, char **argv) {
 									break;
 							}
 						}
-					} else {
-						watching_num--;
 					}
 				} else { assert(evt == Connection::OnRecv);
 					//got data from client:
